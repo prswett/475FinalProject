@@ -18,11 +18,19 @@ namespace _475FinalProject
             HttpCookie reqCookies = Request.Cookies["userInfo"];
             if (reqCookies == null)
             {
-                // Server.Transfer("Login.aspx");
+                Server.Transfer("Login.aspx");
             }
-            /*
-            studentID = reqCookies["UserName"].ToString();
-            string sql = "SELECT ID FROM Student WHERE UW_ID = " + studentID + ";";
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
+            m_dbConnection.Open();
+
+            string User_Name = string.Empty;
+            string User_Password = string.Empty;
+            User_Name = Request.Cookies["UserName"].Value;
+            User_Password = Request.Cookies["Password"].Value;
+            int UW_ID = Int32.Parse(User_Name);
+
+            string sql = "SELECT ID FROM Student WHERE UW_ID = " + UW_ID + ";";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             string teststring = "";
@@ -31,15 +39,12 @@ namespace _475FinalProject
                 teststring = teststring + reader["ID"];
             }
             studentID = Int32.Parse(teststring);
-            */
-            studentID = 2;
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
-            m_dbConnection.Open();
+            
             // displaying the table
-            string sql = "SELECT * FROM Style;";
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-            SQLiteDataReader reader = command.ExecuteReader();
-            string teststring = "";
+            sql = "SELECT * FROM Style;";
+            command = new SQLiteCommand(sql, m_dbConnection);
+            reader = command.ExecuteReader();
+            teststring = "";
 
             //reader command works like scanner bringing in 1 column at a time
             //while there is a next column with data read it and concatonate it to the already existing string

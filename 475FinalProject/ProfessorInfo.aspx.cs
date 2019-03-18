@@ -14,11 +14,11 @@ namespace _475FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             Label2.Text = "";
-            /*HttpCookie reqCookies = Request.Cookies["userInfo"];
+            HttpCookie reqCookies = Request.Cookies["userInfo"];
             if (reqCookies == null)
             {
-                // Server.Transfer("Login.aspx");
-            }*/
+              Server.Transfer("Login.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)

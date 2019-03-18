@@ -18,30 +18,34 @@ namespace _475FinalProject
             HttpCookie reqCookies = Request.Cookies["userInfo"];
             if (reqCookies == null)
             {
-                // Server.Transfer("Login.aspx");
+                Server.Transfer("Login.aspx");
             }
             SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
             m_dbConnection.Open();
-            /*
-             studentID = reqCookies["UserName"].ToString();
-             string sql = "SELECT ID FROM Student WHERE UW_ID = " + studentID + ";";
-             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-             SQLiteDataReader reader = command.ExecuteReader();
-             string teststring = "";
-             while (reader.Read())
-             {
-                 teststring = teststring + reader["ID"];
-             }
-             studentID = Int32.Parse(teststring);
-             */
-            studentID = 2;
 
 
-            // displaying the table
-            string sql = "SELECT * FROM Degree;";
+            string User_Name = string.Empty;
+            string User_Password = string.Empty;
+            User_Name = Request.Cookies["UserName"].Value;
+            User_Password = Request.Cookies["Password"].Value;
+            int UW_ID = Int32.Parse(User_Name);
+
+            string sql = "SELECT ID FROM Student WHERE UW_ID = " + UW_ID + ";";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             string teststring = "";
+            while (reader.Read())
+            {
+                teststring = teststring + reader["ID"];
+            }
+            studentID = Int32.Parse(teststring);
+
+
+            // displaying the table
+            sql = "SELECT * FROM Degree;";
+            command = new SQLiteCommand(sql, m_dbConnection);
+            reader = command.ExecuteReader();
+            teststring = "";
             while (reader.Read())
             {
                 teststring = teststring + "<br />" + "ID: " + reader["ID"] + "<br />" + "Degree: " + reader["DegreeName"] + "<br />";
@@ -80,14 +84,14 @@ namespace _475FinalProject
             sql = "UPDATE Student_Review SET Student_ID = " + 0 + " WHERE Student_ID = " + studentID + ";";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            /*
+            
             HttpCookie userInfo = HttpContext.Current.Request.Cookies["userInfo"];
             HttpContext.Current.Response.Cookies.Remove("userInfo");
             userInfo.Expires = DateTime.Now.AddDays(-10);
             userInfo.Value = null;
             HttpContext.Current.Response.SetCookie(userInfo);
             m_dbConnection.Close();
-            */
+            
             Server.Transfer("Login.aspx");
         }
 
@@ -98,6 +102,10 @@ namespace _475FinalProject
                 Label2.Text = "Please enter a department and a level";
                 return;
             }
+            TextBox1.Text = TextBox1.Text.Replace(";", "");
+            TextBox2.Text = TextBox2.Text.Replace(";", "");
+            TextBox3.Text = TextBox3.Text.Replace(";", "");
+
             SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
             m_dbConnection.Open();
             // checking class existence
@@ -133,6 +141,10 @@ namespace _475FinalProject
                 return;
             }
             // update degree
+
+            TextBox1.Text = TextBox1.Text.Replace(";", "");
+            TextBox2.Text = TextBox2.Text.Replace(";", "");
+            TextBox3.Text = TextBox3.Text.Replace(";", "");
 
             SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
             m_dbConnection.Open();

@@ -19,40 +19,6 @@ namespace _475FinalProject
             {
                 Server.Transfer("UserHub.aspx");
             }
-            
-            /*
-            //create connection to db
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475Project ;Version=3;");
-            m_dbConnection.Open();
-
-            //create sequel query
-            string sql = "SELECT * FROM Student;";
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-
-            //execute the reader command
-            SQLiteDataReader reader = command.ExecuteReader();
-            string teststring = "HI";
-
-            //reader command works like scanner bringing in 1 column at a time
-            //while there is a next column with data read it and concatonate it to the already existing string
-            while (reader.Read())
-            {
-                teststring = teststring + "ID: " + reader["ID"] + " UW_ID: " + reader["UW_ID"]
-                    + " FirstName: " + reader["FirstName"] + " MiddleName: " + reader["MiddleName"] + " LastName: " 
-                    + reader["LastName"] + " Email: " + reader["Email"] + " Password: " + reader["Password"] + "<br />";
-            }
-            //set the label on the page equal to the results read in from the query
-            Label1.Text = teststring;
-            m_dbConnection.Close();
-            
-            //testing to retrieve cookie info from the user
-            /*
-            HttpCookie userInfo = new HttpCookie("userInfo");
-            userInfo["UserName"] = "Annathurai";
-            userInfo["UserColor"] = "Black";
-            userInfo.Expires.Add(new TimeSpan(0, 1, 0));
-            Response.Cookies.Add(userInfo);
-            */
         }
 
 
