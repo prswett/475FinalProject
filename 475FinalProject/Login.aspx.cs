@@ -36,7 +36,7 @@ namespace _475FinalProject
         {
 
             //create object that holds a connection to the db and open it
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475Project ;Version=3;");
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
             m_dbConnection.Open();
 
             //if user typed into both of the text boxes 

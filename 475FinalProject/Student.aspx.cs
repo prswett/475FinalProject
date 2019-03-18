@@ -65,7 +65,7 @@ namespace _475FinalProject
         protected void Button1_Click(object sender, EventArgs e)
         {
             //open db connection 
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475Project ;Version=3;");
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
             m_dbConnection.Open();
 
             //check to see if the user typed things into the textboxes

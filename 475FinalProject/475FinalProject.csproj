@@ -254,6 +254,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
+    <Content Include="ProfessorInfo.aspx" />
+    <Content Include="ReviewProfessor.aspx" />
     <Content Include="Student.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -273,9 +275,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="App_Data\475Project">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="App_Data\475ProjV3.db" />
     <None Include="Properties\PublishProfiles\475FinalProject - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -322,6 +322,20 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfessorInfo.aspx.cs">
+      <DependentUpon>ProfessorInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfessorInfo.aspx.designer.cs">
+      <DependentUpon>ProfessorInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewProfessor.aspx.cs">
+      <DependentUpon>ReviewProfessor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReviewProfessor.aspx.designer.cs">
+      <DependentUpon>ReviewProfessor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student.aspx.cs">
       <DependentUpon>Student.aspx</DependentUpon>
