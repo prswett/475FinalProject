@@ -9,7 +9,20 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            USERHUB PAGE</div>
+            USERHUB PAGE<br />
+            <br />
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            jabfabjfbasjkbasjbckjkbjskbjbjkasdc<br />
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="special button" />
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <br />
+        </div>
     </form>
 </body>
 </html>

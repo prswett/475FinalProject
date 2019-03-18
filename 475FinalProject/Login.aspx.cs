@@ -13,16 +13,17 @@ namespace _475FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //just some testing stuff this is the same thing as in the student file
-            //just seeing if i could print out some stuff
-            /*
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/Lecture03 ;Version=3;");
-            m_dbConnection.Open();
 
-            string sql = "SELECT * FROM Employee;";
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-            SQLiteDataReader reader = command.ExecuteReader();
-            */
+            
+            HttpCookie reqCookies = Request.Cookies["userInfo"];
+            if (reqCookies != null)
+            {
+                Server.Transfer("UserHub.aspx");
+            }
+            
+
+                
+
         }
 
         protected void TextBox2_TextChanged(object sender, EventArgs e)
@@ -39,30 +40,39 @@ namespace _475FinalProject
             m_dbConnection.Open();
 
             //if user typed into both of the text boxes 
-            if (TextBox1.Text != String.Empty & TextBox2.Text != String.Empty)
+            if (TextBox1.Text != String.Empty && TextBox2.Text != String.Empty)
             {
-               
-                //create a query to look for a user in the db with a matching UW ID and Password
-                string sql = "SELECT * FROM Student WHERE Student.UW_ID = " + TextBox1.Text + " AND Student.Password = '" + TextBox2.Text + "';";
-                SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
 
-                //If the amount of results returned is 0 then try again
-                int count = Convert.ToInt32(command.ExecuteScalar());
-                if(count == 0)
+                //create a query to look for a user in the db with a matching UW ID and Password
+                TextBox1.Text = TextBox1.Text.Replace(";", "");
+                TextBox2.Text = TextBox2.Text.Replace(";", "");
+
+                string sql = "SELECT * FROM Student WHERE Student.UW_ID = " + TextBox1.Text + " AND Student.Password = '" + TextBox2.Text + "';";
+                Label1.Text = sql; 
+                SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+                try
                 {
-                    Label1.Text = "Incorrect Login Please Try Again";
+                    //If the amount of results returned is 0 then try again
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    if (count == 0)
+                    {
+                        Label1.Text = "Incorrect Login Please Try Again";
+                    }
+                    else
+                    {
+                        HttpCookie userInfo = new HttpCookie("userInfo");
+                        userInfo["UserName"] = TextBox1.Text;
+                        userInfo["Password"] = TextBox2.Text;
+                        userInfo.Expires.Add(new TimeSpan(1, 0, 0));
+                        Response.Cookies.Add(userInfo);
+                        Server.Transfer("UserHub.aspx");
+                    }
                 }
-                //if a match is found put a cookie on their local machine for one hour
-                // and transfer then to the Userhub page
-                else
+                catch (SQLiteException sqle)
                 {
-                    HttpCookie userInfo = new HttpCookie("userInfo");
-                    userInfo["UserName"] = TextBox1.Text;
-                    userInfo["Password"] = TextBox2.Text;
-                    userInfo.Expires.Add(new TimeSpan(1, 0, 0));
-                    Response.Cookies.Add(userInfo);
-                    Server.Transfer("UserHub.aspx");
+                    Label1.Text = "Sorry your login information is incorrect please try again";
                 }
+
             }
             //if there is not user text in both textboxes tell them to try again
             else
