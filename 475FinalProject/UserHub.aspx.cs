@@ -23,8 +23,8 @@ namespace _475FinalProject
 
                 string User_Name = string.Empty;
                 string User_Password = string.Empty;
-                User_Name = Request.Cookies["UserName"].Value;
-                User_Password = Request.Cookies["Password"].Value;
+                User_Name = reqCookies["UserName"].ToString();
+                User_Password = reqCookies["Password"].ToString();
                 int UW_ID = Int32.Parse(User_Name);
 
                 string sql = "SELECT FirstName, LastName FROM Student WHERE UW_ID = " + UW_ID + ";";
@@ -34,7 +34,7 @@ namespace _475FinalProject
                 string teststring = "";
                 while (reader.Read())
                 {
-                    teststring = teststring + reader["FirstName"] + reader["LastName"];
+                    teststring = teststring + reader["FirstName"] + " " + reader["LastName"];
                 }
                 Label1.Text = teststring;
 
