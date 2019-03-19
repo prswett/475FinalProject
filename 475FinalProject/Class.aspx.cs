@@ -60,6 +60,7 @@ namespace _475FinalProject
 
                         Label2.Text = output;
                     }
+                    connection.Close();
                 }
                 catch (SQLiteException sqle)
                 {
@@ -111,7 +112,7 @@ namespace _475FinalProject
                 {
                     Label2.Text = "Please enter a class department and name";
                 }
-                
+                connection.Close();
             }
             catch (SQLiteException sqle)
             {
