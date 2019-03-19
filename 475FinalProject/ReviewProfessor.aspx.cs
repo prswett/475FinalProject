@@ -50,7 +50,7 @@ namespace _475FinalProject
             //while there is a next column with data read it and concatonate it to the already existing string
             while (reader.Read())
             {
-                teststring = teststring + "<br />" + "ID: " + reader["ID"] + "<br />" + "Description: " + reader["Description"] + "<br />";
+                teststring = teststring + "<br />" + "ID: " + reader["ID"] + "<br />" + "StyleDescription: " + reader["StyleDescription"] + "<br />";
             }
             Label4.Text = teststring;
             m_dbConnection.Close();

@@ -46,6 +46,9 @@
         <p>
             <asp:Label ID="Label2" runat="server" Text="Search Specific Class"></asp:Label>
         </p>
+        <p>
+            <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Home" />
+        </p>
     </form>
 </body>
 </html>
