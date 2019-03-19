@@ -253,6 +253,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Class.aspx" />
+    <Content Include="ClassSearch.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="ProfessorInfo.aspx" />
     <Content Include="ReviewProfessor.aspx" />
@@ -316,6 +318,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Class.aspx.cs">
+      <DependentUpon>Class.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class.aspx.designer.cs">
+      <DependentUpon>Class.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassSearch.aspx.cs">
+      <DependentUpon>ClassSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassSearch.aspx.designer.cs">
+      <DependentUpon>ClassSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -37,14 +37,13 @@ namespace _475FinalProject
                     teststring = teststring + reader["FirstName"] + " " + reader["LastName"];
                 }
                 Label1.Text = teststring;
-
+                m_dbConnection.Close();
             }
             else
             {
                 Server.Transfer("Login.aspx");
             }
             
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -56,9 +55,9 @@ namespace _475FinalProject
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            /*
-            Server.Transfer("SearchClass.aspx");
-            */
+            
+            Server.Transfer("ClassSearch.aspx");
+            
         }
     }
 }

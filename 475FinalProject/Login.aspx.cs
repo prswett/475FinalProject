@@ -61,6 +61,7 @@ namespace _475FinalProject
                         userInfo["Password"] = TextBox2.Text;
                         userInfo.Expires.Add(new TimeSpan(1, 0, 0));
                         Response.Cookies.Add(userInfo);
+                        m_dbConnection.Close();
                         Server.Transfer("UserHub.aspx");
                     }
                 }
@@ -73,6 +74,7 @@ namespace _475FinalProject
             //if there is not user text in both textboxes tell them to try again
             else
             {
+                m_dbConnection.Close();
                 Label1.Text = "Incorrect Login Please Try Again";
             }
         }

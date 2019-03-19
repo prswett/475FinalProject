@@ -76,7 +76,7 @@ namespace _475FinalProject
                             userInfo["Password"] = TextBox6.Text;
                             userInfo.Expires.Add(new TimeSpan(1, 0, 0));
                             Response.Cookies.Add(userInfo);
-
+                            
                             //transfer then to the userhub page
                             Server.Transfer("UserHub.aspx");
                             
