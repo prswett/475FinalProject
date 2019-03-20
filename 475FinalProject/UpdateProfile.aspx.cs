@@ -98,38 +98,46 @@ namespace _475FinalProject
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-            if ((TextBox2.Text == String.Empty) || (TextBox3.Text == String.Empty))
+            try
             {
-                Label2.Text = "Please enter a department and a level";
-                return;
-            }
-            TextBox2.Text = TextBox2.Text.Replace(";", "");
-            TextBox3.Text = TextBox3.Text.Replace(";", "");
+                if ((TextBox2.Text == String.Empty) || (TextBox3.Text == String.Empty))
+                {
+                    Label2.Text = "Please enter a department and a level";
+                    return;
+                }
+                TextBox2.Text = TextBox2.Text.Replace(";", "");
+                TextBox3.Text = TextBox3.Text.Replace(";", "");
 
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
-            m_dbConnection.Open();
-            // checking class existence
-            string sql = "SELECT * FROM Class WHERE Class.Department = '" + TextBox2.Text + "' AND Class.Level = " + TextBox3.Text + ";";
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-            int count = Convert.ToInt32(command.ExecuteScalar());
-            if (count == 0)
-            {
-                Label2.Text = "Please make sure your department and level are valid";
-                return;
-            }
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version=3;");
+                m_dbConnection.Open();
+                // checking class existence
+                string sql = "SELECT * FROM Class WHERE Class.Department = '" + TextBox2.Text + "' AND Class.Level = " + TextBox3.Text + ";";
+                SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                if (count == 0)
+                {
+                    Label2.Text = "Please make sure your department and level are valid";
+                    return;
+                }
 
-            // getting class ID
-            SQLiteDataReader reader = command.ExecuteReader();
-            string teststring = "";
-            while (reader.Read())
-            {
-                teststring = teststring + reader["ID"];
+                // getting class ID
+                SQLiteDataReader reader = command.ExecuteReader();
+                string teststring = "";
+                while (reader.Read())
+                {
+                    teststring = teststring + reader["ID"];
+                }
+                int classID = Int32.Parse(teststring);
+                sql = "DELETE FROM Completed_Courses WHERE Class_ID = " + classID + " AND Student_ID = " + studentID + ";";
+                command = new SQLiteCommand(sql, m_dbConnection);
+                command.ExecuteNonQuery();
+                m_dbConnection.Close();
+                Label2.Text = "Course deleted.";
             }
-            int classID = Int32.Parse(teststring);
-            sql = "DELETE FROM Completed_Courses WHERE Class_ID = " + classID + " AND Student_ID = " + studentID + ";";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-            m_dbConnection.Close();
+            catch (Exception excp)
+            {
+                Label2.Text = "Something went wrong. Try again or look at tables.";
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
