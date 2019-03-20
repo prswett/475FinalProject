@@ -253,6 +253,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AuditDegree.aspx" />
     <Content Include="Class.aspx" />
     <Content Include="ClassSearch.aspx" />
     <Content Include="Login.aspx" />
@@ -318,6 +319,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="AuditDegree.aspx.cs">
+      <DependentUpon>AuditDegree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuditDegree.aspx.designer.cs">
+      <DependentUpon>AuditDegree.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Class.aspx.cs">
       <DependentUpon>Class.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

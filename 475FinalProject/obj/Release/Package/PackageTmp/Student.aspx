@@ -1,16 +1,13 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Student.aspx.cs" Inherits="_475FinalProject.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>Student Creation/Update</h2>
-    <h3>Page to create and update student info.</h3>
-    <p>Try it out :).</p>
+    <h2><%: Title %>&nbsp;:SignUp</h2>
+    <p>&nbsp;</p>
 <p>Please enter the following information. Non-skippable information *.</p>
 <p>&nbsp;</p>
-<p>Aditional Test stuff for now</p>
 <p>
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </p>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>Student ID*</p>
 <p>

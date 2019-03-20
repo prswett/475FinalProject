@@ -56,7 +56,7 @@ namespace _475FinalProject
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            // Server.Transfer("AuditDegree.aspx");
+            Server.Transfer("AuditDegree.aspx");
         }
 
         protected void Button3_Click(object sender, EventArgs e)
