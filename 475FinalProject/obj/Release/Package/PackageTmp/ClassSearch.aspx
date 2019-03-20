@@ -16,7 +16,19 @@
             <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged">
 </asp:TextBox>
             <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
-            <asp:TextBox ID="TextBox3" runat="server" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
+            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem>Tough Grader</asp:ListItem>
+                <asp:ListItem>Amazing Lecturer</asp:ListItem>
+                <asp:ListItem>Old-school</asp:ListItem>
+                <asp:ListItem>Chill</asp:ListItem>
+                <asp:ListItem>Lots of Reading</asp:ListItem>
+                <asp:ListItem>Inspirational</asp:ListItem>
+                <asp:ListItem>Leaves the Comfort Zone</asp:ListItem>
+                <asp:ListItem>Assigns Busy-work</asp:ListItem>
+                <asp:ListItem>Promotes Participation</asp:ListItem>
+                <asp:ListItem>Ambiguous Grader</asp:ListItem>
+                <asp:ListItem>By the Book</asp:ListItem>
+            </asp:DropDownList>
             <asp:TextBox ID="TextBox4" runat="server" OnTextChanged="TextBox4_TextChanged"></asp:TextBox>
             <asp:TextBox ID="TextBox5" runat="server" OnTextChanged="TextBox5_TextChanged"></asp:TextBox>
         </p>

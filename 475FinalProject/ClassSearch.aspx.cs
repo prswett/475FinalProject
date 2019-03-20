@@ -20,7 +20,7 @@ namespace _475FinalProject
                 m_dbConnection.Open();
 
                 //Teacher name, attitude, teaching style, overall teacher score, workload, grade, class names, credits, quarter, year
-                if (TextBox1.Text != String.Empty || TextBox2.Text != String.Empty || TextBox3.Text != String.Empty || TextBox4.Text != String.Empty || TextBox5.Text != String.Empty ||
+                if (TextBox1.Text != String.Empty || TextBox2.Text != String.Empty || DropDownList1.Text != String.Empty || TextBox4.Text != String.Empty || TextBox5.Text != String.Empty ||
                     TextBox6.Text != String.Empty || TextBox7.Text != String.Empty || TextBox8.Text != String.Empty || TextBox9.Text != String.Empty || TextBox10.Text != String.Empty ||
                     TextBox11.Text != String.Empty)
                 {
@@ -42,7 +42,7 @@ namespace _475FinalProject
 
                     string firstname = TextBox1.Text;
                     string lastname = TextBox2.Text;
-                    string teachingstyle = TextBox3.Text;
+                    string teachingstyle = DropDownList1.Text;
                     int teacherscore = 0;
                     int workload = 0;
                     int grade = 0;
@@ -69,17 +69,17 @@ namespace _475FinalProject
 
                     if (firstname != String.Empty)
                     {
-                        sql += " AND Professor.FirstName = '" + firstname + "' ";
+                        sql += " AND Professor.FirstName LIKE '" + firstname + "' ";
                     }
 
                     if (lastname != String.Empty)
                     {
-                        sql += " AND Professor.LastName = '" + lastname + "' ";
+                        sql += " AND Professor.LastName LIKE '" + lastname + "' ";
                     }
 
                     if (teachingstyle != String.Empty)
                     {
-                        sql += " AND Style.Description = '" + teachingstyle + "' ";
+                        sql += " AND Style.StyleDescription LIKE '" + teachingstyle + "' ";
                     }
 
                     if (TextBox4.Text != String.Empty)
@@ -127,19 +127,19 @@ namespace _475FinalProject
 
                     if (classname != String.Empty)
                     {
-                        sql += "AND Class.Course_Name = '" + classname + "' ";
+                        sql += "AND Class.Course_Name LIKE '" + classname + "' ";
                     }
 
                     sql += " AND Class.Credits >= '" + credit + "' ";
 
                     if (quarter != String.Empty)
                     {
-                        sql += " AND Class_Information.Quarter = '" + quarter + "' ";
+                        sql += " AND Class_Information.Quarter LIKE '" + quarter + "' ";
                     }
 
                     if (year != String.Empty)
                     {
-                        sql += " AND Class_Information.Quarter = '" + year + "' ";
+                        sql += " AND Class_Information.Year LIKE '" + year + "' ";
                     }
 
                     if (TextBox11.Text != String.Empty)
@@ -223,7 +223,7 @@ namespace _475FinalProject
                         }
                     }
 
-                    string sql = "Select * From Class Where Class.Level = " + temp + " AND Class.Department = '" + TextBox12.Text;
+                    string sql = "Select * From Class Where Class.Level = " + temp + " AND Class.Department LIKE '" + TextBox12.Text;
                     sql.Replace(';', ' ');
                     sql += "';";
 
@@ -325,6 +325,11 @@ namespace _475FinalProject
         protected void Button4_Click(object sender, EventArgs e)
         {
             Server.Transfer("UserHub.aspx");
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

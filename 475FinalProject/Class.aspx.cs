@@ -32,7 +32,7 @@ namespace _475FinalProject
                     SQLiteConnection connection = new SQLiteConnection("Data Source = |DataDirectory|/475ProjV3.db ;Version = 3");
                     connection.Open();
 
-                    string output = "SELECT * FROM Class WHERE Class.Department = '" + department +
+                    string output = "SELECT * FROM Class WHERE Class.Department LIKE '" + department +
                         "' AND Class.Level = " + classname;
 
                     output.Replace(";", " ");
@@ -53,8 +53,8 @@ namespace _475FinalProject
 
                         while (reader.Read())
                         {
-                            output += "<b>Class</b>: " + reader["Department"] + " " + reader["Course_Name"] + "<br /><b>Description</b>:: " +
-                            reader["Description"] + " " + "<br /><b>Credits</b>:: " + reader["Credits"] + "<br />";
+                            output += "<b>Class</b>: " + reader["Department"] + " " + reader["Course_Name"] + "<br /><b>Description</b>: " +
+                            reader["Description"] + " " + "<br /><b>Credits</b>: " + reader["Credits"] + "<br />";
 
                         }
 
@@ -84,7 +84,7 @@ namespace _475FinalProject
                 connection.Open();
                 if (TextBox1.Text != String.Empty & TextBox2.Text != String.Empty)
                 {
-                    string sql = "Select * From Class Where Class.Level = " + TextBox2.Text + " AND Class.Department = '" + TextBox1.Text + "';";
+                    string sql = "Select * From Class Where Class.Level = " + TextBox2.Text + " AND Class.Department LIKE '" + TextBox1.Text + "';";
 
                     SQLiteCommand command = new SQLiteCommand(sql, connection);
                     int count = Convert.ToInt32(command.ExecuteScalar());
@@ -100,8 +100,8 @@ namespace _475FinalProject
 
                         while (reader.Read())
                         {
-                            output += "<b>Class</b>: " + reader["Department"] + " " + reader["Course_Name"] + "<br /><b>Description</b>:: " +
-                            reader["Description"] + " " + "<br /><b>Credits</b>:: " + reader["Credits"] + "<br />";
+                            output += "<b>Class</b>: " + reader["Department"] + " " + reader["Course_Name"] + "<br /><b>Description</b>: " +
+                            reader["Description"] + " " + "<br /><b>Credits</b>: " + reader["Credits"] + "<br />";
 
                         }
 
@@ -136,3 +136,4 @@ namespace _475FinalProject
         }
     }
 }
+
