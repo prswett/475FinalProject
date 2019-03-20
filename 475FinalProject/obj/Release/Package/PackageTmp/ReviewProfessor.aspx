@@ -31,9 +31,7 @@
             <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
             <br />
             <br />
-            Style (See numbers below):<br />
-            <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-            <br />
+            Style (Select Below):<br />
             <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                 <asp:ListItem Value="0">0: Tough Grader</asp:ListItem>
                 <asp:ListItem Value="1">1: Amazing Lecturer</asp:ListItem>
@@ -77,5 +75,4 @@
     </form>
 </body>
 </html>
-
 

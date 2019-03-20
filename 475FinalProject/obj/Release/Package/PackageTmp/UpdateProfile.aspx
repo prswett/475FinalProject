@@ -29,11 +29,16 @@
             <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Delete Completed Course" />
             <br />
             <br />
-            Add Degree ID (See Below):<br />
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <br />
-            <asp:Label ID="Label1" runat="server" Text="PlaceHolder"></asp:Label>
-            <br />
+            Change Degree (Select From Below):<br />
+            <asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:ListItem Value="1">1: Computer Science</asp:ListItem>
+                <asp:ListItem Value="2">2: Physics</asp:ListItem>
+                <asp:ListItem Value="3">3: Biology</asp:ListItem>
+                <asp:ListItem Value="4">4: Psychology</asp:ListItem>
+                <asp:ListItem Value="5">5: English</asp:ListItem>
+                <asp:ListItem Value="6">6: Political Science</asp:ListItem>
+                <asp:ListItem Value="7">7: Business</asp:ListItem>
+            </asp:DropDownList>
             <br />
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update Degree" />
@@ -43,4 +48,3 @@
     </form>
 </body>
 </html>
-

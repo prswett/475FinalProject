@@ -41,6 +41,7 @@ namespace _475FinalProject
             studentID = Int32.Parse(teststring);
 
 
+            /*
             // displaying the table
             sql = "SELECT * FROM Degree;";
             command = new SQLiteCommand(sql, m_dbConnection);
@@ -50,7 +51,7 @@ namespace _475FinalProject
             {
                 teststring = teststring + "<br />" + "ID: " + reader["ID"] + "<br />" + "Degree: " + reader["DegreeName"] + "<br />";
             }
-            Label1.Text = teststring;
+            Label1.Text = teststring;*/
             m_dbConnection.Close();
         }
 
@@ -84,14 +85,14 @@ namespace _475FinalProject
             sql = "UPDATE Student_Review SET Student_ID = " + 0 + " WHERE Student_ID = " + studentID + ";";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            
+
             HttpCookie userInfo = HttpContext.Current.Request.Cookies["userInfo"];
             HttpContext.Current.Response.Cookies.Remove("userInfo");
             userInfo.Expires = DateTime.Now.AddDays(-10);
             userInfo.Value = null;
             HttpContext.Current.Response.SetCookie(userInfo);
             m_dbConnection.Close();
-            
+
             Server.Transfer("Login.aspx");
         }
 
@@ -102,7 +103,6 @@ namespace _475FinalProject
                 Label2.Text = "Please enter a department and a level";
                 return;
             }
-            TextBox1.Text = TextBox1.Text.Replace(";", "");
             TextBox2.Text = TextBox2.Text.Replace(";", "");
             TextBox3.Text = TextBox3.Text.Replace(";", "");
 
@@ -126,7 +126,7 @@ namespace _475FinalProject
                 teststring = teststring + reader["ID"];
             }
             int classID = Int32.Parse(teststring);
-            sql = "DELETE FROM Completed_Courses WHERE Class_ID = " + classID + ";";
+            sql = "DELETE FROM Completed_Courses WHERE Class_ID = " + classID + " AND Student_ID = " + studentID + ";";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
             m_dbConnection.Close();
@@ -134,15 +134,13 @@ namespace _475FinalProject
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            TextBox1.Text = TextBox1.Text.Replace(";", "");
-            if ((TextBox1.Text == String.Empty))
+            if ((DropDownList1.Text == String.Empty))
             {
                 Label2.Text = "Please enter a valid course ID";
                 return;
             }
             // update degree
 
-            TextBox1.Text = TextBox1.Text.Replace(";", "");
             TextBox2.Text = TextBox2.Text.Replace(";", "");
             TextBox3.Text = TextBox3.Text.Replace(";", "");
 
@@ -153,14 +151,15 @@ namespace _475FinalProject
             int count = Convert.ToInt32(command.ExecuteScalar());
             if (count == 0)
             {
-                sql = "INSERT INTO Degree_In_Progress(Student_ID, Degree_ID, IsComplete) VALUES (" + studentID + "," + TextBox1.Text + "," + 0 + ");";
+                sql = "INSERT INTO Degree_In_Progress(Student_ID, Degree_ID, IsComplete) VALUES (" + studentID + "," + DropDownList1.SelectedValue + "," + 0 + ");";
             }
             else
             {
-                sql = "UPDATE Degree_In_Progress SET Degree_ID = " + TextBox1.Text + " WHERE Student_ID = " + studentID + ";";
+                sql = "UPDATE Degree_In_Progress SET Degree_ID = " + DropDownList1.SelectedValue + " WHERE Student_ID = " + studentID + ";";
             }
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
+            Label2.Text = "Degree Updated to: " + DropDownList1.SelectedItem;
             m_dbConnection.Close();
         }
     }

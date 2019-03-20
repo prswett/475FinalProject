@@ -73,12 +73,11 @@ namespace _475FinalProject
             TextBox3.Text = TextBox3.Text.Replace(";", "");
             TextBox4.Text = TextBox4.Text.Replace(";", "");
             TextBox5.Text = TextBox5.Text.Replace(";", "");
-            TextBox6.Text = TextBox6.Text.Replace(";", "");
             TextBox7.Text = TextBox7.Text.Replace(";", "");
             TextBox8.Text = TextBox8.Text.Replace(";", "");
             TextBox9.Text = TextBox9.Text.Replace(";", "");
             //if user typed into both of the text boxes 
-            if ((TextBox1.Text != String.Empty) && (TextBox2.Text != String.Empty) && (TextBox3.Text != String.Empty) && (TextBox4.Text != String.Empty) && (TextBox5.Text != String.Empty) && (TextBox6.Text != String.Empty) && (TextBox7.Text != String.Empty) && (TextBox8.Text != String.Empty) && (TextBox9.Text != String.Empty))
+            if ((TextBox1.Text != String.Empty) && (TextBox2.Text != String.Empty) && (TextBox3.Text != String.Empty) && (TextBox4.Text != String.Empty) && (TextBox5.Text != String.Empty) && (DropDownList1.Text != String.Empty) && (TextBox7.Text != String.Empty) && (TextBox8.Text != String.Empty) && (TextBox9.Text != String.Empty))
             {
                 // checking class existence
                 string sql = "SELECT * FROM Class WHERE Class.Department = '" + TextBox2.Text + "' AND Class.Level = " + TextBox3.Text + ";";
@@ -147,7 +146,7 @@ namespace _475FinalProject
                 }
                 int ratingID = Int32.Parse(teststring);
 
-                int styleID = Int32.Parse(TextBox6.Text);
+                int styleID = Int32.Parse(DropDownList1.SelectedValue);
 
                 // Insert into student Review
                 sql = "INSERT into Student_Review (Student_ID, Rating_ID, StyleDescription_ID, TeacherScore, WorkLoadAmount, Grade, Review) " + "VALUES (" + studentID + ", " + ratingID + "," + styleID + ",'" + TextBox7.Text + "','" + TextBox8.Text + "','" + TextBox9.Text + "','" + TextBox1.Text + "');";
