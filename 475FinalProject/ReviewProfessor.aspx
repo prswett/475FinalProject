@@ -34,6 +34,20 @@
             Style (See numbers below):<br />
             <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
             <br />
+            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem Value="0">0: Tough Grader</asp:ListItem>
+                <asp:ListItem Value="1">1: Amazing Lecturer</asp:ListItem>
+                <asp:ListItem Value="2">2: Old-School</asp:ListItem>
+                <asp:ListItem Value="3">3: Chill</asp:ListItem>
+                <asp:ListItem Value="4">4: Lots of Reading</asp:ListItem>
+                <asp:ListItem Value="5">5: Inspirational</asp:ListItem>
+                <asp:ListItem Value="6">6: Leaves the Comfort Zone</asp:ListItem>
+                <asp:ListItem Value="7">7: Assigns Busy-Work</asp:ListItem>
+                <asp:ListItem Value="8">8: Promotes Participation</asp:ListItem>
+                <asp:ListItem Value="9">9: Ambiguous Grader</asp:ListItem>
+                <asp:ListItem Value="10">10: By The Book</asp:ListItem>
+            </asp:DropDownList>
+            <br />
             <asp:Label ID="Label4" runat="server" Text="StyleTable"></asp:Label>
             <br />
             <br />
@@ -49,10 +63,10 @@
             <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Please Enter a Review Here (or enter &quot;NULL&quot; for no review) :"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Please Enter a Review Here:"></asp:Label>
             <br />
         </div>
-        <asp:TextBox ID="TextBox1" runat="server" Height="200px" Width="400px"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" Height="200px" Width="400px" Columns="10" Rows="10" TextMode="MultiLine"></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
@@ -63,4 +77,5 @@
     </form>
 </body>
 </html>
+
 

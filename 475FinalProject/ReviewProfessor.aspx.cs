@@ -15,6 +15,7 @@ namespace _475FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             Label3.Text = "";
+            Label4.Text = "";
             HttpCookie reqCookies = Request.Cookies["userInfo"];
             if (reqCookies == null)
             {
@@ -39,7 +40,8 @@ namespace _475FinalProject
                 teststring = teststring + reader["ID"];
             }
             studentID = Int32.Parse(teststring);
-            
+
+            /*
             // displaying the table
             sql = "SELECT * FROM Style;";
             command = new SQLiteCommand(sql, m_dbConnection);
@@ -52,7 +54,7 @@ namespace _475FinalProject
             {
                 teststring = teststring + "<br />" + "ID: " + reader["ID"] + "<br />" + "StyleDescription: " + reader["StyleDescription"] + "<br />";
             }
-            Label4.Text = teststring;
+            Label4.Text = teststring;*/
             m_dbConnection.Close();
         }
 
@@ -168,6 +170,11 @@ namespace _475FinalProject
         protected void Button2_Click(object sender, EventArgs e)
         {
             Server.Transfer("UserHub.aspx");
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
